@@ -16,14 +16,22 @@ GSS <-read.csv(file="GSScsv.csv",header=TRUE)
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
 
-By using the data from the General Social Survey (GSS), this analysis will try to determine belief in the big bang theory (BIGBANG) is independent of race (RACE)? If the analysis finds that belief in the big bang theory is not independent of race, we will attempt to determine which races have statistically significant views. 
+By using the data from the General Social Survey (GSS), this analysis will try to determine belief in the big bang theory (BIGBANG) is independent of race (RACE)? If the analysis finds that belief in the big bang theory is not independent of race, we will attempt to determine which races have statistically significant views.   
 
 The null hypothesis is that there is no difference in belief in the big bang theory by race.
-The alternative hypothesis is that there is a difference in belief in the big bang theory between at least two of the race categories in the study.
+The alternative hypothesis is that there is a difference in belief in the big bang theory between at least two of the race categories in the GSS.  
 
 # Methods
 
 <!--Decide on your methods:  use "variable analysis" or other appropriate descriptors.  Make sure to choose at least one graphical method and at least one numerical method. Discuss what data manipulations may be needed for example subsetting or other binning procedures and what sort of graphical displays and inferential tools will be used!-->
+  
+For this analysis, we will complete try to understand if a categorical variable can be explained by another categorical variable. We will use a Cat~CAt helper filter to complete this study. Before completing the components of the analysis, we must convert the two character variables (BigBang and Race) to factor variables.   
+```{r}
+GSS$RACE = as.factor(GSS$RACE)
+```
+```{r}
+GSS$BIGBANG = as.factor(GSS$BIGBANG)
+```
 
 # Results
 
@@ -35,9 +43,34 @@ The alternative hypothesis is that there is a difference in belief in the big ba
 
 <!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question. Bottom line is to explain the features of the graph that are relevant to conforming or departing to what is expected by your null hypothesis !-->
 
+```{r}
+dd2 <- GSS %>% group_by(RACE,BIGBANG) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=RACE,y=count,fill=BIGBANG))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=RACE,y=prcnt*100,fill=BIGBANG)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```
+
+The GSS has three categories for race: black, white and other. The majority of black people did not believe the Big Bag theory was true. Of the white people, half believe the big bang theory is true and the other half believe it is false. Of the people categorized as other, slightly more believe the big bang theory is true.  
+
 ### Numerical Descriptive Results
 
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+
+```{r}
+table1 <- xtabs(~RACE + BIGBANG, data=GSS)
+rowPerc(table1)
+colPerc(table1)
+```
+
+Of the black participants in the GSS, over 80% of them believe the Big Bang theory is false. Of the white participants in the GSS, 50% believe the Big Bang Theory is false. Of the participants categorized as other, only 44.44% of them believe the Big Bang Theory is false.   
 
 ## Inferential Results
 
