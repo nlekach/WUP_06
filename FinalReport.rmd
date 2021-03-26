@@ -1,7 +1,7 @@
 ---
 title: "GSS challange"
-author: "Put your name here!"
-date: "put the date here"
+author: "Natalia Lekach"
+date: "March 26, 2021"
 output: html_document
 ---
 
@@ -16,8 +16,10 @@ GSS <-read.csv(file="GSScsv.csv",header=TRUE)
 
 <!--In this section you explain what you are trying to show.  Where did the data come from?  What is the research or other question you are trying to answer?.  If you skimp in this section expect to be marked down in your grade. Paint a picture of the project a couple of paragraphs is expected!-->
 
-Is belief in the bigbang theory (BIGBANG) independent of race (RACE)?
-If not, then whose view differs from whom??
+By using the data from the General Social Survey (GSS), this analysis will try to determine belief in the big bang theory (BIGBANG) is independent of race (RACE)? If the analysis finds that belief in the big bang theory is not independent of race, we will attempt to determine which races have statistically significant views. 
+
+The null hypothesis is that there is no difference in belief in the big bang theory by race.
+The alternative hypothesis is that there is a difference in belief in the big bang theory between at least two of the race categories in the study.
 
 # Methods
 
