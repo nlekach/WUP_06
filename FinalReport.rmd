@@ -80,7 +80,7 @@ Of the black participants in the GSS, over 80% of them believe the Big Bang theo
 chisq.test(table2)
 chisqtestGC(table2)
 ```
-This Chi-Squared test indicates that we must reject the null hypothesis and accept the alternative hypothesis - there is a relation between race and belief in teh big bang theory. The very small p-value of 0.011 indicates that there is a very small chance that this result occurred by chance. 
+This Chi-Squared test indicates that we must reject the null hypothesis and accept the alternative hypothesis - there is a relationship between race and belief in the big bang theory. The very small p-value of 0.011 indicates that there is a very small chance that this result occurred by chance. 
 
 To determine which racial groups' belief in the big bang theory are statistically different, we must complete multiple Fisher tests.
 
@@ -159,3 +159,5 @@ According to the Fisher Exact tests, there is a statistically significant differ
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+
+We can accept the alternative hypothesis - there is a difference in belief in the big bang theory by race. By completing various inferential tests, Chi Squared and Fisher Exact, we can determine that there is a statistically significant difference between black and white people's belief in the big bang theory and between Black and other people's belief in the big bang theory.   
